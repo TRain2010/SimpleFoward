@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
+        if (rb.position.y < -1)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     private void Update()
